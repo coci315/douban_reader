@@ -1,0 +1,28 @@
+{
+  "name": "douban_reader",
+  "version": "1.0.0",
+  "description": "a website like douban read",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coci315/douban_reader.git"
+  },
+  "author": "coci315",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coci315/douban_reader/issues"
+  },
+  "homepage": "https://github.com/coci315/douban_reader#readme",
+  "dependencies": {
+    "koa": "^2.2.0",
+    "koa-router": "^7.1.1",
+    "koa-static-server": "^1.0.0",
+    "koa-views": "^6.0.2",
+    "nunjucks": "^3.0.0",
+    "request": "^2.81.0",
+    "request-promise": "^4.2.0"
+  }
+}
