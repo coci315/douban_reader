@@ -13,11 +13,11 @@ app.use(staticServer({
 }));
 
 // Must be used before any router is used 
-app.use(views(__dirname + '/views', {
-  map: {
-    html: 'nunjucks'
-  }
-}));
+// app.use(views(__dirname + '/views', {
+//   map: {
+//     html: 'nunjucks'
+//   }
+// }));
 
 app.use(routes);
 app.listen(3000);
