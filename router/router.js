@@ -31,6 +31,9 @@ var env = createEnv('views', {
   filters: {
     hex: function (n) {
       return '0x' + n.toString(16);
+    },
+    formatPrice: function (price) {
+      return '￥ ' + (price / 100).toFixed(2);
     }
   }
 });
@@ -47,9 +50,17 @@ router.get('/view_test', async function (ctx, next) {
 });
 // 首页
 router.get('/', async function (ctx, next) {
+  const categories = await service.getCategoryData();
   ctx.body = await env.render('index.html', {
     bannerLink: 'https://read.douban.com/topic/1061/?ici=%E7%A7%92%E6%9D%80&amp;icn=index-banner',
-    bannerBG: 'https://img1.doubanio.com/view/ark_campaign_pic/large/public/4208.jpg'
+    bannerBG: 'https://img1.doubanio.com/view/ark_campaign_pic/large/public/4208.jpg',
+    categories: categories,
+    cateName: {
+      new: '新上架',
+      top: '热门',
+      gallery: '画册',
+      free: '免费'
+    }
   });
 });
 // 搜索

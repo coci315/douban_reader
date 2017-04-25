@@ -1,0 +1,30 @@
+{% for category in categories %}
+<div class="m-category">
+  <a href="{{'/category/'+category.name}}" class="head">
+    <h2>{{cateName[category.name]}}<i class="icon-more"></i></h2>
+  </a>
+  <div class="books-container-outer">
+    <div class="books-container-inner">
+      {% for work in category.works %}
+      <a href="{{'/ebook/'+work.id}}">
+        <div class="item-book">
+          <div class="cover">
+          {% if work.price == 0 %}
+            <span class="cover-label free-label">免费</span>
+          {% elif work.promotion %}
+            <span class="cover-label sale-label">特价</span>
+          {% elif work.is_bundle %}
+            <span class="cover-label bundle-label">套装</span>
+          {% endif %}
+            <img src="{{work.cover}}" alt="{{work.title}}">
+          </div>
+          <h3 class="book-title">{{work.title}}</h3>
+          <p class="book-author">{{work.author}}</p>
+          <p class="book-price">{{work.price | formatPrice}}</p>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endfor %}
