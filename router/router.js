@@ -79,13 +79,22 @@ router.get('/ebook/:id', async function (ctx, next) {
 router.get('/column', async function (ctx, next) {
   const data = await service.getChannelData('column');
   ctx.body = await env.render('column.html', {
-    data: data
+    data: data,
+    headerTitle: '豆瓣专栏',
+    subtitle: '世间之事，经验之谈。',
+    kind: 'column',
+    cateTitle: '专栏分类'
   });
 });
 // 连载
 router.get('/serial', async function (ctx, next) {
+  const data = await service.getChannelData('serial');
   ctx.body = await env.render('serial.html', {
-    title: '连载'
+    data: data,
+    headerTitle: '豆瓣连载',
+    subtitle: '追就对了。',
+    kind: 'serial',
+    cateTitle: '连载分类'
   });
 });
 // api测试路由

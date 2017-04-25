@@ -1,5 +1,5 @@
 <div class="m-column-categories">
-  <h2>专栏分类</h2>
+  <h2>{{cateTitle}}</h2>
   <ul class="categories-list">
   {% for category in data.categories %}
   <li><a href="{{'/columns/category/' + category.id + '?kind=column'}}">{{category.name}}</a></li>

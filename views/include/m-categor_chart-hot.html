@@ -1,11 +1,11 @@
 <div class="m-category chart-hot">
-  <a href="/columns/chart/hot/?kind=column" class="head">
+  <a href="/columns/chart/hot/?kind={{kind}}" class="head">
     <h2>近期热门<i class="icon-more"></i></h2>
   </a>
   <div class="books-container-outer">
     <div class="books-container-inner">
       {% for column in data.charts[0].columns %}
-      <a href="{{'/column/'+column.id+'/?icn=column-indie-hot&ici=column'}}">
+      <a href="{{'/column/'+column.id+'/?icn='+kind+'-indie-hot&ici='+kind}}">
         <div class="item-book">
           <div class="cover">
             <img src="{{column.retina_cover_url}}" alt="{{column.title}}">
