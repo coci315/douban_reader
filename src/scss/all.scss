@@ -338,6 +338,26 @@ img {
   .book-price {
     font-size: 12px;
     color: #77a4b3;
+  } // m-category_chart-hot.html
+  .book-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+    color: #999;
+  }
+  .subscriber-num {
+    font-size: 12px;
+    color: #77a4b3;
+  }
+  &.chart-hot,
+  &.chart-last-updated {
+    margin-top: 20px;
+  }
+  &.chart-last-updated {
+    .subscriber-num {
+      display: none;
+    }
   }
 }
 
@@ -349,5 +369,105 @@ img {
   .copyright {
     font-size: 12px;
     color: #888;
+  }
+}
+
+// page-column
+// column_header.html
+.column-header {
+  padding: 12px 0;
+  h1,
+  .subtitle {
+    padding: 0 12px;
+  }
+  h1 {
+    font-size: 22px;
+    font-weight: bold;
+  }
+  .subtitle {
+    font-size: 14px;
+    color: #222;
+  }
+  .link-more {
+    float: right;
+  }
+  .slide {
+    margin-top: 10px;
+    width: 375px;
+    overflow: hidden;
+  }
+  .slide-list {
+    width: 2250px;
+    font-size: 0;
+  }
+  .slide-item {
+    display: inline-block;
+  }
+  img {
+    width: 375px;
+  }
+  .slide-controls-container {
+    text-align: center;
+  }
+  .slide-controls {
+    display: inline-block;
+    vertical-align: middle;
+    padding-top: 8px;
+    li {
+      display: inline-block;
+      margin-right: 6px;
+    }
+    a {
+      display: block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: #ccc;
+      &.active {
+        background-color: #71ce85;
+      }
+    }
+  }
+}
+
+// m-column-categories.html
+.m-column-categories {
+  padding: 12px 15px;
+  h2 {
+    position: relative;
+    padding-bottom: 6px;
+    font-size: 15px;
+    font-weight: bold;
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      border-bottom: 1px solid #d8d8d8;
+      transform: scaleY(.5);
+    }
+  }
+  .categories-list {
+    margin-top: 8px;
+    font-size: 0;
+    li {
+      display: inline-block;
+      margin: 4px 0;
+      width: 32%;
+      margin-right: 2%;
+      text-align: center;
+      font-size: 16px;
+      background-color: #eee;
+      &:nth-child(3n) {
+        margin-right: 0;
+      }
+      a {
+        display: block;
+        padding: 4px 8px;
+        font-size: 13px;
+        color: #626262;
+      }
+    }
   }
 }

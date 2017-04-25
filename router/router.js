@@ -77,8 +77,9 @@ router.get('/ebook/:id', async function (ctx, next) {
 });
 // 专栏
 router.get('/column', async function (ctx, next) {
+  const data = await service.getChannelData('column');
   ctx.body = await env.render('column.html', {
-    title: '专栏'
+    data: data
   });
 });
 // 连载

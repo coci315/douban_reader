@@ -1,1 +1,24 @@
-{{title}}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="format-detection" content="telephone=no">
+  <title>连载 | 豆瓣阅读</title>
+  <link rel="stylesheet" href="../static/css/all.css">
+</head>
+
+<body>
+  {% include "./include/header.html" %}
+  <div class="g-body">
+    {% include "./include/column_header.html" %}
+    {% include "./include/m-categor_chart-hot.html" %}
+    {% include "./include/m-categor_chart-last-updated.html" %}
+    {% include "./include/m-column-categories.html" %}
+  </div>
+  {% include "./include/footer.html" %}
+</body>
+
+</html>

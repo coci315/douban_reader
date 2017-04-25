@@ -542,6 +542,27 @@ img {
   color: #77a4b3;
 }
 
+.m-category .book-info {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  color: #999;
+}
+
+.m-category .subscriber-num {
+  font-size: 12px;
+  color: #77a4b3;
+}
+
+.m-category.chart-hot, .m-category.chart-last-updated {
+  margin-top: 20px;
+}
+
+.m-category.chart-last-updated .subscriber-num {
+  display: none;
+}
+
 .m-footer {
   padding: 25px 0 10px;
   text-align: center;
@@ -551,4 +572,120 @@ img {
 .m-footer .copyright {
   font-size: 12px;
   color: #888;
+}
+
+.column-header {
+  padding: 12px 0;
+}
+
+.column-header h1,
+.column-header .subtitle {
+  padding: 0 12px;
+}
+
+.column-header h1 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.column-header .subtitle {
+  font-size: 14px;
+  color: #222;
+}
+
+.column-header .link-more {
+  float: right;
+}
+
+.column-header .slide {
+  margin-top: 10px;
+  width: 375px;
+  overflow: hidden;
+}
+
+.column-header .slide-list {
+  width: 2250px;
+  font-size: 0;
+}
+
+.column-header .slide-item {
+  display: inline-block;
+}
+
+.column-header img {
+  width: 375px;
+}
+
+.column-header .slide-controls-container {
+  text-align: center;
+}
+
+.column-header .slide-controls {
+  display: inline-block;
+  vertical-align: middle;
+  padding-top: 8px;
+}
+
+.column-header .slide-controls li {
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.column-header .slide-controls a {
+  display: block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.column-header .slide-controls a.active {
+  background-color: #71ce85;
+}
+
+.m-column-categories {
+  padding: 12px 15px;
+}
+
+.m-column-categories h2 {
+  position: relative;
+  padding-bottom: 6px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.m-column-categories h2:after {
+  position: absolute;
+  content: ' ';
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  border-bottom: 1px solid #d8d8d8;
+  transform: scaleY(0.5);
+}
+
+.m-column-categories .categories-list {
+  margin-top: 8px;
+  font-size: 0;
+}
+
+.m-column-categories .categories-list li {
+  display: inline-block;
+  margin: 4px 0;
+  width: 32%;
+  margin-right: 2%;
+  text-align: center;
+  font-size: 16px;
+  background-color: #eee;
+}
+
+.m-column-categories .categories-list li:nth-child(3n) {
+  margin-right: 0;
+}
+
+.m-column-categories .categories-list li a {
+  display: block;
+  padding: 4px 8px;
+  font-size: 13px;
+  color: #626262;
 }
