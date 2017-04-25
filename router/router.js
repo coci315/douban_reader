@@ -80,21 +80,21 @@ router.get('/column', async function (ctx, next) {
   const data = await service.getChannelData('column');
   ctx.body = await env.render('column.html', {
     data: data,
+    title: '专栏',
     headerTitle: '豆瓣专栏',
     subtitle: '世间之事，经验之谈。',
-    kind: 'column',
-    cateTitle: '专栏分类'
+    kind: 'column'
   });
 });
 // 连载
 router.get('/serial', async function (ctx, next) {
   const data = await service.getChannelData('serial');
-  ctx.body = await env.render('serial.html', {
+  ctx.body = await env.render('column.html', {
     data: data,
+    title: '连载',
     headerTitle: '豆瓣连载',
     subtitle: '追就对了。',
-    kind: 'serial',
-    cateTitle: '连载分类'
+    kind: 'serial'
   });
 });
 // api测试路由
