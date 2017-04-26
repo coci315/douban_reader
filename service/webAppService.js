@@ -38,3 +38,32 @@ exports.getSearchData = function (start, limit, query) {
   };
   return rp(options);
 };
+// 下载图片
+// exports.saveImage = function (url) {
+//   const options = {
+//     uri: url,
+//     headers: {
+//       // referer: 'https://read.douban.com/'
+//     }
+//   };
+//   rp(options).pipe(fs.createWriteStream(path.resolve(__dirname, '../static/downloads/images/', '02.jpg')));
+// };
+
+// 代理图片请求
+exports.proxyImage = function (url, referer) {
+  const options = {
+    uri: url,
+    headers: {
+      referer: referer
+    }
+  };
+  return rp(options);
+};
+
+// 处理JSON中的图片url地址，将豆瓣的图片请求地址转为本地的请求地址
+exports.transformURLinJSON = function (objJSON) {
+  const reg = /(https:\/\/img\d\.doubanio\.com)/g;
+  const strJSON = JSON.stringify(objJSON);
+  const newStrJSON = strJSON.replace(reg, '/ajax/image?url=$1');
+  return JSON.parse(newStrJSON);
+};

@@ -50,10 +50,11 @@ router.get('/view_test', async function (ctx, next) {
 });
 // 首页
 router.get('/', async function (ctx, next) {
-  const categories = await service.getCategoryData();
+  let categories = await service.getCategoryData();
+  categories = service.transformURLinJSON(categories);
   ctx.body = await env.render('index.html', {
-    bannerLink: 'https://read.douban.com/topic/1061/?ici=%E7%A7%92%E6%9D%80&amp;icn=index-banner',
-    bannerBG: 'https://img1.doubanio.com/view/ark_campaign_pic/large/public/4208.jpg',
+    bannerLink: 'https://read.douban.com/topic/1061/?ici=%E7%A7%92%E6%9D%80&icn=index-banner',
+    bannerBG: '/ajax/image/?url=https://img1.doubanio.com/view/ark_campaign_pic/large/public/4208.jpg',
     categories: categories,
     cateName: {
       new: '新上架',
@@ -63,6 +64,7 @@ router.get('/', async function (ctx, next) {
     }
   });
 });
+
 // 搜索
 router.get('/search', async function (ctx, next) {
   ctx.body = await env.render('search.html', {
@@ -77,7 +79,8 @@ router.get('/ebook/:id', async function (ctx, next) {
 });
 // 专栏
 router.get('/column', async function (ctx, next) {
-  const data = await service.getChannelData('column');
+  let data = await service.getChannelData('column');
+  data = service.transformURLinJSON(data);
   ctx.body = await env.render('column.html', {
     data: data,
     title: '专栏',
@@ -88,7 +91,8 @@ router.get('/column', async function (ctx, next) {
 });
 // 连载
 router.get('/serial', async function (ctx, next) {
-  const data = await service.getChannelData('serial');
+  let data = await service.getChannelData('serial');
+  data = service.transformURLinJSON(data);
   ctx.body = await env.render('column.html', {
     data: data,
     title: '连载',
@@ -124,6 +128,18 @@ router.get('/ajax/search', async function (ctx, next) {
   const limit = ctx.query.limit || 10;
   const query = ctx.query.query || '';
   ctx.body = await service.getSearchData(start, limit, query);
+});
+
+// 由于豆瓣图片有防外链，需要转发请求
+router.get('/ajax/image', function (ctx, next) {
+  const url = ctx.query.url;
+  const referer = 'https://read.douban.com/';
+  if (!url) {
+    return ctx.status = 404;
+  } else {
+    ctx.type = 'image/jpeg';
+    ctx.body = service.proxyImage(url, referer);
+  }
 });
 
 module.exports = router.routes();
