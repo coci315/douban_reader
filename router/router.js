@@ -40,6 +40,8 @@ var env = createEnv('views', {
 
 // 测试路由
 router.get('/route_test', (ctx) => {
+  // 获取豆瓣首页banner的链接地址及图片URL
+  service.getIndexBannerData();
   ctx.body = 'hello koa';
 });
 // 模板测试路由
@@ -53,8 +55,8 @@ router.get('/', async function (ctx, next) {
   let categories = await service.getCategoryData();
   categories = service.transformURLinJSON(categories);
   ctx.body = await env.render('index.html', {
-    bannerLink: 'https://read.douban.com/topic/1061/?ici=%E7%A7%92%E6%9D%80&icn=index-banner',
-    bannerBG: '/ajax/image/?url=https://img1.doubanio.com/view/ark_campaign_pic/large/public/4208.jpg',
+    bannerLink: 'https://read.douban.com/competition/2016/?ici=index-banner&amp;icn=index-banner',
+    bannerBG: '/ajax/image/?url=https://img3.doubanio.com/view/ark_campaign_pic/large/public/4136.jpg',
     categories: categories,
     cateName: {
       new: '新上架',
@@ -79,7 +81,7 @@ router.get('/ebook/:id', async function (ctx, next) {
 });
 // 专栏
 router.get('/column', async function (ctx, next) {
-  let data = await service.getChannelData('column');
+  let data = await service.getChannelDataByDouban('column');
   data = service.transformURLinJSON(data);
   ctx.body = await env.render('column.html', {
     data: data,
@@ -91,7 +93,7 @@ router.get('/column', async function (ctx, next) {
 });
 // 连载
 router.get('/serial', async function (ctx, next) {
-  let data = await service.getChannelData('serial');
+  let data = await service.getChannelDataByDouban('serial');
   data = service.transformURLinJSON(data);
   ctx.body = await env.render('column.html', {
     data: data,
@@ -113,14 +115,14 @@ router.get('/ajax/index', async function (ctx, next) {
 router.get('/ajax/category', async function (ctx, next) {
   ctx.body = await service.getCategoryData();
 });
-// 获取不同频道的数据
+// 获取不同频道的数据，转发豆瓣相关页面的ajax接口
 router.get('/ajax/channel', async function (ctx, next) {
   const kindArray = ['column', 'serial'];
   const kind = ctx.query.kind;
   if (!kind || kindArray.indexOf(kind) === -1) {
     return ctx.body = '{"r":1}';
   }
-  ctx.body = await service.getChannelData(kind);
+  ctx.body = await service.getChannelDataByDouban(kind);
 });
 // 查询接口，调用豆瓣阅读查询接口
 router.get('/ajax/search', async function (ctx, next) {

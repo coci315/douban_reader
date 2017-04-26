@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const rp = require('request-promise');
+const cheerio = require('cheerio');
 
 // 测试数据
 exports.getTestData = function () {
@@ -20,11 +21,38 @@ exports.getCategoryData = function () {
   };
   return rp(options);
 };
-// 获取不同频道的数据
+// 获取豆瓣阅读首页banner的链接地址以及图片url
+exports.getIndexBannerData = function () {
+  const options = {
+    uri: 'https://read.douban.com/',
+    // headers: {
+    //   'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
+    // },
+    transform: function (body) {
+      return cheerio.load(body);
+    }
+  }
+  rp(options)
+    .then(function ($) {
+      console.log($('.slide-show').html());
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+};
+// 获取不同频道的数据，提前存在本地的JSON文件
 exports.getChannelData = function (kind) {
   const content = fs.readFileSync(path.resolve(__dirname, '../mock/channel/' + kind + '.json'), 'utf-8');
   return JSON.parse(content);
 };
+// 获取不同频道的数据，调用豆瓣相关页面的ajax接口
+exports.getChannelDataByDouban = function (kind) {
+  const options = {
+    uri: 'https://read.douban.com/j/column/?kind=' + kind,
+    json: true
+  };
+  return rp(options);
+}
 // 查询接口，调用豆瓣阅读查询接口
 exports.getSearchData = function (start, limit, query) {
   const options = {

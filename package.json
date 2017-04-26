@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/coci315/douban_reader#readme",
   "dependencies": {
+    "cheerio": "^0.22.0",
     "koa": "^2.2.0",
     "koa-router": "^7.1.1",
     "koa-static-server": "^1.0.0",
