@@ -18,7 +18,7 @@
      </div>
     </li>
   </ul>
-  <div class="list-more" @click="loadmore" v-cloak>
+  <div class="list-more" @click="loadmore" v-show="showloadmore" v-cloak>
     <p v-show="!showicon">点击加载更多</p>
     <div v-show="showicon" class="load-icon">
       <i></i>

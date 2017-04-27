@@ -7,7 +7,8 @@ var app = new Vue({
   el: '#app',
   data: {
     works: [],
-    showicon: false
+    showicon: false,
+    showloadmore: false
   },
   computed: {
     hrefs: function () {
@@ -24,6 +25,7 @@ var app = new Vue({
   delimiters: ['${', '}'],
   created: function () {
     this.$http.get('/ajax/category/' + kind + '?start=0&limit=10').then(response => {
+      this.showloadmore = true;
       this.works = response.body;
     }, response => {
       console.log(response);
