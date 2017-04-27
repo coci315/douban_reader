@@ -33,6 +33,7 @@ var env = createEnv('views', {
       return '0x' + n.toString(16);
     },
     formatPrice: function (price) {
+      if (price === 0) return '免费';
       return '￥ ' + (price / 100).toFixed(2);
     }
   }

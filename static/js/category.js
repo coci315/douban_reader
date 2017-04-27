@@ -19,6 +19,7 @@ var app = new Vue({
   },
   filters: {
     formatPrice: function (price) {
+      if (price === 0) return '免费';
       return '￥' + (price / 100).toFixed(2);
     }
   },
