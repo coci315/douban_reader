@@ -108,3 +108,25 @@ exports.getCategoryDataByDouban = function (kind, start = 0, limit = 10) {
   };
   return rp(options);
 };
+
+// 代理书籍详情请求
+exports.getEbookDateByDouban = function (id) {
+  const options = {
+    uri: 'https://read.douban.com/j/ebook/' + id,
+    json: true
+  };
+  return rp(options);
+};
+
+// 代理书籍评论请求
+exports.getEbookReviewsByDouban = function (id, start = 0, limit = 0) {
+  const options = {
+    uri: 'https://read.douban.com/j/ebook/' + id + '/reviews',
+    qs: {
+      start,
+      limit
+    },
+    json: true
+  };
+  return rp(options);
+}

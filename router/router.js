@@ -167,4 +167,22 @@ router.get('/ajax/category/:kind', async function (ctx, next) {
   ctx.body = data;
 });
 
+// 获取书籍详情数据，转发豆瓣ajax接口
+router.get('/ajax/ebook/:id', async function (ctx, next) {
+  const id = ctx.params.id;
+  let data = await service.getEbookDateByDouban(id);
+  data = service.transformURLinJSON(data);
+  ctx.body = data;
+});
+
+// 获取书籍评论数据，转发豆瓣ajax接口
+router.get('/ajax/ebook/:id/reviews', async function (ctx, next) {
+  const id = ctx.params.id;
+  const start = ctx.query.start || 0;
+  const limit = ctx.query.limit || 10;
+  let data = await service.getEbookReviewsByDouban(id, start, limit);
+  data = service.transformURLinJSON(data);
+  ctx.body = data;
+})
+
 module.exports = router.routes();
