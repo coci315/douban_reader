@@ -52,7 +52,7 @@ router.get('/view_test', async function (ctx, next) {
 });
 // 首页
 router.get('/', async function (ctx, next) {
-  let categories = await service.getCategoryData();
+  let categories = await service.getIndexDataByDouban();
   categories = service.transformURLinJSON(categories);
   ctx.body = await env.render('index.html', {
     bannerLink: 'https://read.douban.com/competition/2016/?ici=index-banner&amp;icn=index-banner',
@@ -103,6 +103,18 @@ router.get('/serial', async function (ctx, next) {
     kind: 'serial'
   });
 });
+// 分类列表页
+router.get('/category/:category', async function (ctx, next) {
+  const titles = {
+    new: '新上架',
+    top: '热门',
+    gallery: '画册',
+    free: '免费'
+  };
+  ctx.body = await env.render('category.html', {
+    title: titles[ctx.params.category]
+  });
+});
 // api测试路由
 router.get('/api_test', async function (ctx, next) {
   ctx.body = await service.getTestData();
@@ -142,6 +154,16 @@ router.get('/ajax/image', function (ctx, next) {
     ctx.type = 'image/jpeg';
     ctx.body = service.proxyImage(url, referer);
   }
+});
+
+// 获取分类数据，转发豆瓣ajax接口
+router.get('/ajax/category/:kind', async function (ctx, next) {
+  const kind = ctx.params.kind;
+  const start = ctx.query.start || 0;
+  const limit = ctx.query.limit || 10;
+  let data = await service.getCategoryDataByDouban(kind, start, limit);
+  data = service.transformURLinJSON(data);
+  ctx.body = data;
 });
 
 module.exports = router.routes();

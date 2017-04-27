@@ -1,0 +1,29 @@
+<div id="app" class="category-list">
+  <ul class="works-list" v-cloak>
+    <li v-for="(work,index) in works" class="item-wrap">
+      <div class="item">
+      <a :href="hrefs[index]">
+        <div class="cover">
+          <img :src="work.cover" :alt="work.title">
+        </div>
+        <div class="info">
+          <h4 class="title">${work.title}</h4>
+          <h5 class="subtitle">${work.subtitle}</h5>
+          <p class="author">${work.author}</p>
+          <div class="rating" v-show="work.rating>0">${work.rating}</div>
+          <p class="intro">${work.abstract}</p>
+          <p class="price">${work.price | formatPrice}</p>
+        </div>
+      </a>
+     </div>
+    </li>
+  </ul>
+  <div class="list-more" @click="loadmore" v-cloak>
+    <p v-show="!showicon">点击加载更多</p>
+    <div v-show="showicon" class="load-icon">
+      <i></i>
+      <i></i>
+      <i></i>
+    </div>
+  </div>
+</div>

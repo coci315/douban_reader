@@ -14,7 +14,7 @@ exports.getIndexData = function () {
   return JSON.parse(content);
 };
 // 首页数据，调用豆瓣阅读首页的ajax接口
-exports.getCategoryData = function () {
+exports.getIndexDataByDouban = function () {
   const options = {
     uri: 'https://read.douban.com/j/category/',
     json: true
@@ -94,4 +94,17 @@ exports.transformURLinJSON = function (objJSON) {
   const strJSON = JSON.stringify(objJSON);
   const newStrJSON = strJSON.replace(reg, '/ajax/image?url=$1');
   return JSON.parse(newStrJSON);
+};
+
+// 代理分类请求
+exports.getCategoryDataByDouban = function (kind, start = 0, limit = 10) {
+  const options = {
+    uri: 'https://read.douban.com/j/category/' + kind,
+    qs: {
+      start,
+      limit
+    },
+    json: true
+  };
+  return rp(options);
 };

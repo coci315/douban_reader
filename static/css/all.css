@@ -183,6 +183,15 @@ a:hover {
   }
 }
 
+@keyframes breath {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: .2;
+  }
+}
+
 body {
   background-color: #f8f9f9;
 }
@@ -688,4 +697,118 @@ img {
   padding: 4px 8px;
   font-size: 13px;
   color: #626262;
+}
+
+[v-cloak] {
+  display: none;
+}
+
+.category-list .item {
+  padding: 18px 13px;
+  border-bottom: 1px solid #ddd;
+}
+
+.category-list .item:before, .category-list .item:after {
+  content: ' ';
+  display: table;
+}
+
+.category-list .item:after {
+  clear: both;
+}
+
+.category-list .item a {
+  display: block;
+}
+
+.category-list .cover {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  width: 80px;
+  height: 119px;
+  margin-bottom: 8px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  background: url("../images/default-cover.png") 0 0/cover no-repeat #fff;
+}
+
+@media (min-width: 361px) {
+  .category-list .cover,
+  .category-list .cover img {
+    width: 95px;
+    height: 142px;
+  }
+}
+
+.category-list .info {
+  margin-left: 100px;
+  font-size: 13px;
+  color: #a6a6a6;
+}
+
+.category-list .title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  line-height: 1.4;
+  font-size: 15px;
+  font-weight: bold;
+  color: #333;
+}
+
+.category-list .subtitle,
+.category-list .author {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.category-list .subtitle {
+  font-size: 15px;
+}
+
+.category-list .intro {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-height: 1.5;
+}
+
+.category-list .price {
+  margin: 6px 0 8px;
+  line-height: 1;
+  color: #333;
+}
+
+.category-list .list-more {
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 15px;
+  color: #8e8e8e;
+  background-color: #fff;
+}
+
+.category-list .load-icon {
+  font-size: 0;
+}
+
+.category-list .load-icon i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px;
+  background-color: #999;
+  animation: breath .9s linear alternate infinite;
+}
+
+.category-list .load-icon i:nth-child(2) {
+  animation-delay: .3s;
+}
+
+.category-list .load-icon i:nth-child(3) {
+  animation-delay: .6s;
 }
