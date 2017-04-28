@@ -183,6 +183,19 @@ router.get('/ajax/ebook/:id/reviews', async function (ctx, next) {
   let data = await service.getEbookReviewsByDouban(id, start, limit);
   data = service.transformURLinJSON(data);
   ctx.body = data;
-})
+});
+
+// 获取作品类型，转发豆瓣接口
+router.get('/ajax/works_type_id', async function (ctx, next) {
+  const id = ctx.query.identity;
+  ctx.body = await service.getWorksTypeByDouban(id);
+});
+
+// 获取书籍初始化数据，转发豆瓣接口
+router.post('/ajax/donate/init', async function (ctx, next) {
+  console.log(ctx.request.body)
+  const id = ctx.request.body.works_id;
+  ctx.body = await service.getInitDataByDouban(id);
+});
 
 module.exports = router.routes();

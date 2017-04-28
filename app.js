@@ -1,10 +1,13 @@
 const Koa = require('koa');
 const views = require('koa-views');
 const staticServer = require('koa-static-server');
+const bodyParser = require('koa-bodyparser');
 
 const routes = require('./router/router');
 
 const app = new Koa();
+
+app.use(bodyParser());
 
 app.use(staticServer({
   rootDir: './static',

@@ -19,6 +19,7 @@
   "dependencies": {
     "cheerio": "^0.22.0",
     "koa": "^2.2.0",
+    "koa-bodyparser": "^4.2.0",
     "koa-router": "^7.1.1",
     "koa-static-server": "^1.0.0",
     "koa-views": "^6.0.2",

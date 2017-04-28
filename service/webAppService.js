@@ -129,4 +129,28 @@ exports.getEbookReviewsByDouban = function (id, start = 0, limit = 0) {
     json: true
   };
   return rp(options);
-}
+};
+
+// 代理作品类型请求
+exports.getWorksTypeByDouban = function (id) {
+  const options = {
+    uri: 'https://read.douban.com/j/works_type_id',
+    qs: {
+      identity: id
+    },
+    json: true
+  };
+  return rp(options);
+};
+
+// 代理书籍初始化
+exports.getInitDataByDouban = function (id) {
+  const options = {
+    method: 'POST',
+    uri: 'https://read.douban.com/j/donate/init',
+    formData: {
+      works_id: id
+    }
+  };
+  return rp(options);
+};
