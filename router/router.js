@@ -175,6 +175,14 @@ router.get('/ajax/ebook/:id', async function (ctx, next) {
   ctx.body = data;
 });
 
+// 获取套装详情数据，转发豆瓣ajax接口
+router.get('/ajax/bundle/:id', async function (ctx, next) {
+  const id = ctx.params.id;
+  let data = await service.getBundleDateByDouban(id);
+  data = service.transformURLinJSON(data);
+  ctx.body = data;
+});
+
 // 获取书籍评论数据，转发豆瓣ajax接口
 router.get('/ajax/ebook/:id/reviews', async function (ctx, next) {
   const id = ctx.params.id;
@@ -184,6 +192,17 @@ router.get('/ajax/ebook/:id/reviews', async function (ctx, next) {
   data = service.transformURLinJSON(data);
   ctx.body = data;
 });
+
+// 获取书籍套装书目数据，转发豆瓣ajax接口
+router.get('/ajax/bundle/:id/bundle_works_list', async function (ctx, next) {
+  const id = ctx.params.id;
+  const start = ctx.query.start || 0;
+  const limit = ctx.query.limit || 10;
+  let data = await service.getBundleWorksListByDouban(id, start, limit);
+  data = service.transformURLinJSON(data);
+  ctx.body = data;
+});
+
 
 // 获取作品类型，转发豆瓣接口
 router.get('/ajax/works_type_id', async function (ctx, next) {

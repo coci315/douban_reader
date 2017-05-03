@@ -118,10 +118,32 @@ exports.getEbookDateByDouban = function (id) {
   return rp(options);
 };
 
+// 代理套装详情请求
+exports.getBundleDateByDouban = function (id) {
+  const options = {
+    uri: 'https://read.douban.com/j/bundle/' + id,
+    json: true
+  };
+  return rp(options);
+};
+
 // 代理书籍评论请求
-exports.getEbookReviewsByDouban = function (id, start = 0, limit = 0) {
+exports.getEbookReviewsByDouban = function (id, start = 0, limit = 10) {
   const options = {
     uri: 'https://read.douban.com/j/ebook/' + id + '/reviews',
+    qs: {
+      start,
+      limit
+    },
+    json: true
+  };
+  return rp(options);
+};
+
+// 代理书籍套装书目请求
+exports.getBundleWorksListByDouban = function (id, start = 0, limit = 10) {
+  const options = {
+    uri: 'https://read.douban.com/j/bundle/' + id + '/bundle_works_list',
     qs: {
       start,
       limit

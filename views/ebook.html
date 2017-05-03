@@ -12,8 +12,11 @@
 
 <body>
   {% include "./include/header.html" %}
-  <div class="g-body">
-    {#{% include "./include/category_list.html" %}#}
+  <div class="g-body" id="app" v-cloak>
+    <div v-if="isBundle">
+      {% include "./include/ebook_bundle.html" %}
+    </div>
+    <div v-else>ebook</div>
   </div>
   {% include "./include/footer.html" %}
   <script src="../static/js/libs/vue.js"></script>
