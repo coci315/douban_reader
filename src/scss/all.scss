@@ -587,3 +587,327 @@ img {
     }
   }
 }
+
+// page ebook
+// ebook_bundle.html
+.ebook_bundle {
+  .profile {
+    position: relative;
+    color: #a6a6a6;
+    background-color: #fff;
+    &:before {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 0;
+      border-top: 1px solid #ddd;
+      transform: scaleY(.5);
+    }
+  }
+  .bundle-covers {
+    display: table-cell;
+    vertical-align: bottom;
+    box-sizing: border-box;
+    width: 100vw;
+    height: 58vw;
+    padding-left: 5vw;
+    overflow: hidden;
+    background-color: #f8f9f9;
+    font-size: 0;
+  }
+  .book-cover {
+    display: inline-block;
+    position: relative;
+    vertical-align: bottom;
+  }
+  .bundle-cover {
+    z-index: 50;
+    width: 30.9333vw;
+    height: 46.0128vw;
+    box-shadow: 1px 5px 3px rgba(0, 0, 0, 0.3);
+  }
+  .bundle-spine {
+    position: absolute;
+    top: 0;
+    right: -1.2vw;
+    z-index: 1;
+    width: 1.2vw;
+    height: 46.0128vw;
+    border-width: .96vw 0 0 1.2vw;
+    border-style: solid;
+    border-color: #f8f9f9 transparent transparent #090505;
+    box-shadow: -1px 0 0 0 rgba(255, 255, 255, .3);
+    &:before {
+      position: absolute;
+      content: ' ';
+      top: 50%;
+      left: -3.7vw;
+      width: 2.5vw;
+      height: 5vw;
+      border-radius: 5vw 0 0 5vw;
+      background-color: #090505;
+      box-shadow: inset 0 -1px .5px rgba(255, 255, 255, .5);
+    }
+  }
+  .first-cover {
+    z-index: 49;
+    width: 29.3333vw;
+    height: 43.6333vw;
+    margin-left: -.5333vw;
+  }
+  .second-cover {
+    z-index: 48;
+    width: 27.7333vw;
+    height: 41.2533vw;
+  }
+  .third-cover,
+  .fourth-cover {
+    box-shadow: 1px 0 5px #ddd;
+  }
+  .third-cover {
+    z-index: 47;
+    width: 2.4vw;
+    height: 38.9333vw;
+  }
+  .fourth-cover {
+    z-index: 46;
+    width: 1.8vw;
+    height: 37vw;
+  }
+  .profile-main {
+    overflow: hidden;
+    padding: 15px 14px;
+    h2 {
+      margin-bottom: 10px;
+      line-height: 1.3;
+      font-size: 21px;
+      font-weight: bold;
+      color: #333;
+    }
+  }
+  .main-info {
+    @include clearfix();
+  }
+  .meta {
+    float: left;
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  .price {
+    float: right;
+    text-align: right;
+    font-size: 17px;
+    color: #333;
+  }
+  .intro {
+    position: relative;
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      border-bottom: 1px solid #ddd;
+      transform: scaleY(.5);
+    }
+    .hd {
+      overflow: hidden;
+      margin-bottom: 12px;
+      padding: 20px 15px 0;
+      h3 {
+        line-height: 1;
+        font-weight: bold;
+        font-size: 17px;
+        color: #333;
+      }
+    }
+    .bd {
+      padding: 0 15px 20px;
+      font-size: 16px;
+    }
+    .expand-all {
+      margin-bottom: -10px;
+      height: 25px;
+      line-height: 1.4;
+      text-align: center;
+      &:before {
+        display: inline-block;
+        content: ' ';
+        width: 16px;
+        height: 6px;
+        background: url(../images/icon-expand.svg) no-repeat;
+        background-size: 16px 6px;
+      }
+      &.expanded:before {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  .bundle-works {
+    position: relative;
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 0;
+      border-bottom: 1px solid #ddd;
+      transform: scaleY(.5);
+    }
+    .hd {
+      overflow: hidden;
+      margin-bottom: 12px;
+      padding: 20px 15px 0;
+      h3 {
+        line-height: 1;
+        font-weight: bold;
+        font-size: 17px;
+        color: #333;
+      }
+    }
+    .works-list {
+      .item {
+        overflow: hidden;
+        position: relative;
+        padding: 16px 14px;
+        &:after {
+          position: absolute;
+          content: ' ';
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 0;
+          border-bottom: 1px solid #ddd;
+          transform: scaleY(.5);
+        }
+      }
+      a {
+        display: block;
+        @include clearfix();
+      }
+      .cover {
+        float: left;
+        position: relative;
+        overflow: hidden;
+        width: 80px;
+        height: 119px;
+        margin-bottom: 8px;
+        box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        background: url('../images/default-cover.png') 0 0/cover no-repeat #fff;
+      }
+      @media (min-width: 361px) {
+        .cover,
+        .cover img {
+          width: 95px;
+          height: 142px;
+        }
+      }
+      .info {
+        margin-left: 100px;
+        font-size: 14px;
+        color: #a6a6a6;
+      }
+      .title {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+        line-height: 1.4;
+        font-size: 16px;
+        font-weight: bold;
+        color: #333;
+      }
+      .author {
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+      .intro {
+        display: -webkit-box;
+        overflow: hidden;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        line-height: 1.5;
+      }
+    }
+  }
+}
+
+.purchase-actions-bottom {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 46px;
+  background-color: #fff;
+  &:after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 0;
+    border-top: 1px solid #ddd;
+    transform: scaleY(.5);
+  }
+  .btn-wrapper {
+    position: relative;
+    flex: 1 0 80px;
+    height: 46px;
+    line-height: 46px;
+    text-align: center;
+    &:before {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 100%;
+      border-left: 1px solid #ddd;
+      transform: scaleX(.5);
+    }
+    a {
+      display: block;
+    }
+    i {
+      display: block;
+      margin: 6px auto 3px;
+      height: 20px;
+      line-height: 1;
+      color: #77a4b3;
+    }
+    .btn-text {
+      display: block;
+      line-height: 1;
+      font-size: 10px;
+      color: #a6a6a6;
+    }
+    .icon-share:before {
+      content: ' ';
+      display: inline-block;
+      vertical-align: top;
+      width: 20px;
+      height: 19px;
+      background: url(../images/icon-share.svg) no-repeat;
+      transform: translateX(2px);
+    }
+  }
+  .btn-wrapper-purchase {
+    flex: 2 0 160px;
+  }
+  .btn-purchase {
+    font-size: 16px;
+    color: #fff;
+    background-color: #71ceb5;
+  }
+}
+
+.g-footer {
+  margin-bottom: 46px;
+}

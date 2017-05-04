@@ -6,7 +6,17 @@ var id = window.location.pathname.match(reg)[1];
 var app = new Vue({
   el: '#app',
   data: {
-    isBundle: false
+    isBundle: false,
+    showFull: false,
+    bundleData: {},
+    bundleWorks: []
+  },
+  delimiters: ['${', '}'],
+  filters: {
+    formatPrice: function (price) {
+      if (price === 0) return '免费';
+      return '￥' + (price / 100).toFixed(2);
+    }
   },
   created: async function () {
     var response = await this.$http.get('/ajax/works_type_id?identity=' + id).catch((err) => console.log(err));
@@ -15,7 +25,17 @@ var app = new Vue({
     var url2 = this.isBundle ? '/ajax/bundle/' + id + '/bundle_works_list' : '/ajax/ebook/' + id + '/reviews';
     var response1 = await this.$http.get(url1).catch((err) => console.log(err));
     var response2 = await this.$http.get(url2).catch((err) => console.log(err));
+    if (this.isBundle) {
+      this.bundleData = response1.body;
+      document.title = this.bundleData.title + ' | 豆瓣阅读';
+      this.bundleWorks = response2.body;
+    } else {
 
+    }
+  },
+  methods: {
+    toggleShowFull: function () {
+      this.showFull = !this.showFull;
+    }
   }
-
 });

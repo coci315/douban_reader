@@ -1,0 +1,79 @@
+<div class="ebook_bundle" v-if="bundleData.item_cover_urls">
+  <div class="profile">
+    <div class="bundle-covers">
+      <div class="book-cover bundle-cover">
+        <div class="bundle-spine"></div>
+        <img :src="bundleData.cover_url" alt="封面图片">
+      </div>
+      <div class="book-cover first-cover">
+        <img :src="bundleData.item_cover_urls[0]" alt="封面图片">
+      </div>
+      <div class="book-cover second-cover">
+        <img :src="bundleData.item_cover_urls[1]" alt="封面图片">
+      </div>
+      <div class="book-cover third-cover"></div>
+      <div class="book-cover fourth-cover"></div>
+    </div>
+    <div class="profile-main">
+      <h2>${bundleData.title}</h2>
+      <div class="main-info">
+        <div class="meta">
+          <div class="author">${bundleData.author}</div>
+          <div class="category">${bundleData.category_text}</div>
+          <div class="publisher">${bundleData.agent}</div>
+        </div>
+        <div class="price">${bundleData.fixed_price | formatPrice}</div>
+      </div>
+    </div>
+  </div>
+  <div class="intro" @click="toggleShowFull">
+    <div class="hd">
+      <h3>简介</h3>
+    </div>
+    <div class="bd">
+      <div class="abstract" v-show="!showFull">${bundleData.abstract.slice(0,128) + '...'}</div>
+      <div class="full" v-show="showFull">
+        <p v-for="item in bundleData.abstract.split(/\s+/)">${item}</p>
+      </div>
+      <div class="expand-all" :class="{expanded: showFull}"></div>
+    </div>
+  </div>
+  <div class="bundle-works">
+    <div class="hd">
+      <h3>套装书目 （${bundleWorks.length}部）</h3>
+    </div>
+    <div class="bd works-list-container">
+      <ul class="works-list">
+        <li class="item" v-for="work in bundleWorks">
+          <a :href="work.uri">
+            <div class="cover">
+              <img :src="work.cover_url" alt="封面图片">
+            </div>
+            <div class="info">
+              <h4 class="title">${work.title}</h4>
+              <div class="author">${work.author}</div>
+              <div class="intro">${work.abstract}</div>
+            </div>          
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="purchase-actions-bottom">
+    <div class="btn-wrapper">
+      <a href="javascript:;">
+        <i class="icon-share"></i>
+        <span class="btn-text">分享</span>
+      </a>
+    </div>
+    <div class="btn-wrapper">
+      <a href="javascript:;">
+        <i class="icon-share"></i>
+        <span class="btn-text">赠送</span>
+      </a>
+    </div>
+    <div class="btn-wrapper btn-wrapper-purchase">
+      <a href="javascript:;" class="btn-purchase">购买</a>
+    </div>
+  </div>
+</div>
