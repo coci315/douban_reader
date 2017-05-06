@@ -16,9 +16,11 @@
     <div v-if="isBundle">
       {% include "./include/ebook_bundle.html" %}
     </div>
-    <div v-else>ebook</div>
+    <div v-else>
+      {% include "./include/ebook_ebook.html" %}
+    </div>
   </div>
-  <div class="g-footer">
+  <div id="g-footer">
     {% include "./include/footer.html" %}
   </div>
   <script src="../static/js/libs/vue.js"></script>

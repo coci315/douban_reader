@@ -1,0 +1,144 @@
+<div class="ebook_ebook" v-if="ebookData.abstract">
+  <div class="profile">
+    <div class="inner">
+      <div class="cover">
+        <img :src="ebookData.cover" alt="封面图片">
+      </div>
+      <h2>${ebookData.title}</h2>
+      <div class="rating">
+        <span class="stars-context" :class="starsCount">
+          <span class="stars-active"></span>
+        </span>
+        <span class="score">${ebookData.average_rating | formatRating}</span>
+        （${ebookData.rating_cnt}人评价）
+      </div> 
+      <div class="meta">
+        <div class="author">${ebookData.original_author}</div>
+        <div class="category">${ebookData.kind}</div>
+        <div class="publishing">${ebookData.publisher} / ${ebookData.publish_time}</div>
+        <div class="words-num">${ebookData.round_word_count}</div>
+      </div>
+    </div>
+  </div>
+  <div class="profile-main">
+    <div class="reading-actions-container">
+      <div class="reading-actions">
+        <div class="section-buttons">
+          <span class="btn-wrapper btn-wrapper-read">
+            <a :href="ebookLink" class="btn btn-read">
+              <i class="icon-read"></i>
+              <span class="btn-text">阅读</span>
+            </a>
+          </span>
+          <span class="btn-wrapper btn-wrapper-share">
+            <a href="javascript:;" class="btn btn-share">
+              <i class="icon-share"></i>
+            </a>
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="intro" @click="toggleShowFull">
+      <div class="hd">
+        <h3>简介</h3>
+      </div>
+      <div class="bd">
+        <div class="abstract" v-show="!showFull">${ebookData.abstract.slice(0,125) + '...'}</div>
+        <div class="full" v-show="showFull">
+          <p v-for="item in ebookData.abstract.split(/\s+/)">${item}</p>
+        </div>
+        <div class="expand-all" :class="{expanded: showFull}"></div>
+      </div>
+    </div>
+    <div class="toc" @click="toggleShowFullToc">
+      <div class="hd">
+        <h3>目录</h3>
+      </div>
+      <div class="bd">
+        <div class="toc-box">
+          <ul class="list-toc">
+            <li v-for="item in ebookData.table_of_contents.slice(0,6)" :class="'level-'+item.level">${item.title}</li>
+            <li v-for="item in ebookData.table_of_contents.slice(6)" :class="'level-'+item.level" v-show="showFullToc">${item.title}</li>
+          </ul>
+          <div v-if="ebookData.table_of_contents.length>6" class="expand-all" :class="{expanded: showFullToc}"></div>
+        </div>
+      </div>
+    </div>
+    <div class="tags">
+      <div class="hd">
+        <h3>标签</h3>
+      </div>
+      <div class="bd">
+        <ul class="list-tags">
+          <li class="tag-item" v-for="item in ebookData.tags">
+            <a :href="'/tag/'+item.tag">${item.tag}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="agent">
+      <div class="hd">
+        <h3>${ebookData.agent_works_relationship}</h3>
+      </div>
+      <div class="bd">
+        <div class="col-media">
+          <a :href="ebookData.agent.url">
+            <div class="avatar-wrapper">
+              <div class="avatar">
+                <img :src="ebookData.agent.picture" alt="出版方头像">
+              </div>
+            </div>
+            <div class="name">${ebookData.agent.name}</div>
+          </a>
+        </div>
+        <div v-if="ebookData.agent.should_show_profile" class="agent-profile">
+          <div class="agent-intro">
+            <p>${ebookData.agent.intro}</p>
+          </div>
+          <div class="agent-more-works">
+            <a :href="ebookData.agent.url" class="btn-more">
+              <i class="icon-list"></i>共${ebookData.agent.works_count}部
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reviews">
+      <div class="hd">
+        <h3>读者评论</h3>
+      </div>
+      <div class="bd">
+        <div class="list-reviews">
+          <ul class="works-list">
+            <li class="review-item" v-for="item in reviews" @click="toggleShowFullReview(item)">
+              <div class="rating">
+                <span class="stars-context" :class="'stars-'+item.rating.rating">
+                  <span class="stars-active"></span>
+                </span>
+              </div>
+              <div class="text">
+                <p v-show="!item.showFullReview" class="abstract">${item.abstract}</p>
+                <p v-show="item.showFullReview" class="full">${item.abstract}</p>
+              </div>
+              <a :href="'/review/'+item.id" class="info">
+                <span class="author">${item.author_name}<span class="date">${item.created_time}</span></span>
+                <ul class="review-opt">
+                  <li class="icon-upvote">${item.total_useful}</li>
+                  <li class="icon-reply">${item.total_replies}</li>
+                </ul>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="list-more" @click="loadmore">
+        <p v-show="!showicon">点击加载更多</p>
+        <div v-show="showicon" class="load-icon">
+          <i></i>
+          <i></i>
+          <i></i>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html,
 body,
 h1,
@@ -703,6 +704,49 @@ img {
   display: none;
 }
 
+.list-more {
+  position: relative;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-size: 15px;
+  color: #8e8e8e;
+  background-color: #fff;
+}
+
+.list-more:after {
+  position: absolute;
+  content: ' ';
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #ddd;
+  transform: scaleY(0.5);
+}
+
+.load-icon {
+  font-size: 0;
+}
+
+.load-icon i {
+  display: inline-block;
+  vertical-align: middle;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px;
+  background-color: #999;
+  animation: breath .9s linear alternate infinite;
+}
+
+.load-icon i:nth-child(2) {
+  animation-delay: .3s;
+}
+
+.load-icon i:nth-child(3) {
+  animation-delay: .6s;
+}
+
 .category-list .item {
   padding: 18px 13px;
   border-bottom: 1px solid #ddd;
@@ -780,49 +824,6 @@ img {
   margin: 6px 0 8px;
   line-height: 1;
   color: #333;
-}
-
-.category-list .list-more {
-  position: relative;
-  height: 45px;
-  line-height: 45px;
-  text-align: center;
-  font-size: 15px;
-  color: #8e8e8e;
-  background-color: #fff;
-}
-
-.category-list .list-more:after {
-  position: absolute;
-  content: ' ';
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 0;
-  border-bottom: 1px solid #ddd;
-  transform: scaleY(0.5);
-}
-
-.category-list .load-icon {
-  font-size: 0;
-}
-
-.category-list .load-icon i {
-  display: inline-block;
-  vertical-align: middle;
-  width: 12px;
-  height: 12px;
-  margin: 0 2px;
-  background-color: #999;
-  animation: breath .9s linear alternate infinite;
-}
-
-.category-list .load-icon i:nth-child(2) {
-  animation-delay: .3s;
-}
-
-.category-list .load-icon i:nth-child(3) {
-  animation-delay: .6s;
 }
 
 .ebook_bundle .profile {
@@ -1198,6 +1199,452 @@ img {
   background-color: #71ceb5;
 }
 
-.g-footer {
-  margin-bottom: 46px;
+.stars-context,
+.stars-active {
+  display: inline-block;
+  overflow: hidden;
+  width: 73px;
+  height: 13px;
+  line-height: 1;
+  font-size: 13px;
+  text-indent: 0;
+  background: url(../images/stars.svg) no-repeat;
+}
+
+.stars-active {
+  background-position: 0 -17px;
+}
+
+.stars-5 .stars-active {
+  width: 73px;
+}
+
+.stars-4 .stars-active {
+  width: 58px;
+}
+
+.stars-3 .stars-active {
+  width: 44px;
+}
+
+.stars-2 .stars-active {
+  width: 29px;
+}
+
+.stars-1 .stars-active {
+  width: 14px;
+}
+
+.stars-0 .stars-active {
+  width: 0;
+}
+
+.ebook_ebook .inner {
+  padding: 20px 15px;
+  overflow: hidden;
+  font-size: 14px;
+  color: #a6a6a6;
+  background-color: #fff;
+}
+
+.ebook_ebook .inner h2 {
+  line-height: 1.3;
+  font-size: 21px;
+  font-weight: bold;
+  color: #333;
+}
+
+.ebook_ebook .cover {
+  position: relative;
+  float: right;
+  overflow: hidden;
+  width: 80px;
+  height: 119px;
+  margin-left: 13px;
+  margin-bottom: 5px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+  background: url("../images/default-cover.png") 0 0/cover no-repeat #fff;
+}
+
+@media (min-width: 361px) {
+  .ebook_ebook .cover,
+  .ebook_ebook .cover img {
+    width: 95px;
+    height: 142px;
+  }
+}
+
+.ebook_ebook .rating {
+  margin: 8px 0;
+}
+
+.ebook_ebook .score {
+  margin-left: 7px;
+  color: #fa595f;
+}
+
+.ebook_ebook .meta {
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.ebook_ebook .reading-actions {
+  position: relative;
+  padding: 0 13px 10px;
+  background-color: #fff;
+}
+
+.ebook_ebook .reading-actions:after {
+  position: absolute;
+  content: ' ';
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #ddd;
+  transform: scaleY(0.5);
+}
+
+.ebook_ebook .section-buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.ebook_ebook .btn-wrapper-read {
+  flex: 1 1 auto;
+}
+
+.ebook_ebook .btn {
+  display: block;
+  padding: 0;
+  margin: 0;
+  height: 37px;
+  line-height: 37px;
+  border-radius: 37px;
+  text-align: center;
+}
+
+.ebook_ebook .btn-read {
+  color: #fff;
+  background-color: #71ceb5;
+  min-width: 200px;
+}
+
+.ebook_ebook .icon-read {
+  display: inline-block;
+  width: 24px;
+  height: 19px;
+  margin-right: 10px;
+  vertical-align: -4px;
+  background: url(../images/icon-read-white.svg) no-repeat;
+}
+
+.ebook_ebook .btn-wrapper-share {
+  flex: 0 0 37px;
+  margin-left: 6px;
+}
+
+.ebook_ebook .btn-share {
+  position: relative;
+  width: 37px;
+  background-color: #fff;
+}
+
+.ebook_ebook .btn-share:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: -100%;
+  right: -100%;
+  border: 1px solid #ddd;
+  border-radius: 37px;
+  transform-origin: 0 0;
+  transform: scale(0.5);
+}
+
+.ebook_ebook .icon-share {
+  display: inline-block;
+  vertical-align: -4px;
+  width: 20px;
+  height: 19px;
+  background: url(../images/icon-share.svg) no-repeat;
+}
+
+.ebook_ebook .intro,
+.ebook_ebook .toc,
+.ebook_ebook .tags,
+.ebook_ebook .agent,
+.ebook_ebook .reviews {
+  position: relative;
+}
+
+.ebook_ebook .intro:after,
+.ebook_ebook .toc:after,
+.ebook_ebook .tags:after,
+.ebook_ebook .agent:after,
+.ebook_ebook .reviews:after {
+  position: absolute;
+  content: ' ';
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0;
+  border-bottom: 1px solid #ddd;
+  transform: scaleY(0.5);
+}
+
+.ebook_ebook .intro .hd,
+.ebook_ebook .toc .hd,
+.ebook_ebook .tags .hd,
+.ebook_ebook .agent .hd,
+.ebook_ebook .reviews .hd {
+  overflow: hidden;
+  margin-bottom: 12px;
+  padding: 20px 15px 0;
+}
+
+.ebook_ebook .intro .hd h3,
+.ebook_ebook .toc .hd h3,
+.ebook_ebook .tags .hd h3,
+.ebook_ebook .agent .hd h3,
+.ebook_ebook .reviews .hd h3 {
+  line-height: 1;
+  font-weight: bold;
+  font-size: 17px;
+  color: #333;
+}
+
+.ebook_ebook .intro .bd,
+.ebook_ebook .toc .bd,
+.ebook_ebook .tags .bd,
+.ebook_ebook .agent .bd,
+.ebook_ebook .reviews .bd {
+  padding: 0 15px 20px;
+  font-size: 16px;
+}
+
+.ebook_ebook .intro .expand-all,
+.ebook_ebook .toc .expand-all,
+.ebook_ebook .tags .expand-all,
+.ebook_ebook .agent .expand-all,
+.ebook_ebook .reviews .expand-all {
+  margin-bottom: -10px;
+  height: 25px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.ebook_ebook .intro .expand-all:before,
+.ebook_ebook .toc .expand-all:before,
+.ebook_ebook .tags .expand-all:before,
+.ebook_ebook .agent .expand-all:before,
+.ebook_ebook .reviews .expand-all:before {
+  display: inline-block;
+  content: ' ';
+  width: 16px;
+  height: 6px;
+  background: url(../images/icon-expand.svg) no-repeat;
+  background-size: 16px 6px;
+}
+
+.ebook_ebook .intro .expand-all.expanded:before,
+.ebook_ebook .toc .expand-all.expanded:before,
+.ebook_ebook .tags .expand-all.expanded:before,
+.ebook_ebook .agent .expand-all.expanded:before,
+.ebook_ebook .reviews .expand-all.expanded:before {
+  transform: rotate(180deg);
+}
+
+.ebook_ebook .toc .toc-box {
+  line-height: 1.6;
+}
+
+.ebook_ebook .toc li {
+  margin-left: 1.2em;
+}
+
+.ebook_ebook .toc li:before {
+  display: inline-block;
+  content: '•';
+  width: 1.2em;
+  margin-left: -1.2em;
+  line-height: 1;
+  text-align: center;
+  color: #a6a6a6;
+}
+
+.ebook_ebook .toc .level-1 {
+  padding-left: 1em;
+}
+
+.ebook_ebook .tags .list-tags {
+  margin-right: -5px;
+}
+
+.ebook_ebook .tags .tag-item {
+  display: inline-block;
+  height: 35px;
+  margin: 0 5px 5px 0;
+  padding: 0 10px;
+  line-height: 35px;
+  color: #fff;
+  background-color: #77a4b3;
+}
+
+.ebook_ebook .tags .tag-item a {
+  color: #fff;
+}
+
+.ebook_ebook .agent .col-media {
+  margin-bottom: 13px;
+}
+
+.ebook_ebook .agent .col-media a {
+  display: block;
+}
+
+.ebook_ebook .agent .avatar-wrapper {
+  float: left;
+  margin-right: 13px;
+}
+
+.ebook_ebook .agent .avatar {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 48px;
+  background-color: #ddd;
+}
+
+.ebook_ebook .agent .name {
+  height: 48px;
+  line-height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.ebook_ebook .agent .agent.intro p {
+  line-height: 1.6;
+}
+
+.ebook_ebook .agent .agent-more-works {
+  margin-top: 18px;
+  text-align: center;
+}
+
+.ebook_ebook .agent .btn-more {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 0 20px;
+  height: 37px;
+  line-height: 37px;
+  border-radius: 37px;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 16px;
+  color: #77a4b3;
+  background-color: #fff;
+}
+
+.ebook_ebook .agent .btn-more:after {
+  content: ' ';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: -100%;
+  right: -100%;
+  border: 1px solid #ddd;
+  border-radius: 37px;
+  transform: scale(0.5);
+  transform-origin: 0 0;
+}
+
+.ebook_ebook .agent .icon-list {
+  display: inline-block;
+  width: 17px;
+  height: 12px;
+  margin-right: 8px;
+  background: url(../images/icon_list@2x.png) left top/17px 12px no-repeat;
+}
+
+.ebook_ebook .reviews .bd {
+  padding-bottom: 0;
+}
+
+.ebook_ebook .reviews .works-list:before, .ebook_ebook .reviews .works-list:after {
+  content: ' ';
+  display: table;
+}
+
+.ebook_ebook .reviews .works-list:after {
+  clear: both;
+}
+
+.ebook_ebook .reviews .review-item {
+  margin-bottom: 13px;
+}
+
+.ebook_ebook .reviews .rating {
+  margin-bottom: 8px;
+}
+
+.ebook_ebook .reviews .text {
+  margin-right: 5px;
+  line-height: 1.5;
+}
+
+.ebook_ebook .reviews .abstract {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.ebook_ebook .reviews .info {
+  display: block;
+  padding-top: 8px;
+  font-size: 13px;
+}
+
+.ebook_ebook .reviews .author {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #a6a6a6;
+}
+
+.ebook_ebook .reviews .date {
+  margin-left: 10px;
+}
+
+.ebook_ebook .reviews .review-opt {
+  float: right;
+  height: 15px;
+  line-height: 15px;
+  color: #77a4b3;
+}
+
+.ebook_ebook .reviews .review-opt li {
+  display: inline-block;
+  vertical-align: top;
+  width: auto;
+  height: 100%;
+  margin-left: 10px;
+  padding-left: 16px;
+  background-repeat: no-repeat;
+  background-position: left center;
+}
+
+.ebook_ebook .reviews .review-opt .icon-upvote {
+  background-image: url(../images/icon-upvote.svg);
+  background-position-y: 0;
+}
+
+.ebook_ebook .reviews .review-opt .icon-reply {
+  background-image: url(../images/icon-reply.svg);
+  background-position-y: 2px;
 }
